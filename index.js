@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-    MessageEmbed = require('discord.js');
     canvas = require("discord-canvas")
     db = require("quick.db")
     chalk = require('chalk');
@@ -167,6 +166,7 @@ client.on('message', function (message) {
       }
     });
 
+const { MessageEmbed } = require('discord.js');
 
       client.on('guildCreate', guild => {
     const embed = new MessageEmbed()
