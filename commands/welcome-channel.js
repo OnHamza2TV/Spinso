@@ -2,8 +2,8 @@ const db = require('quick.db')
 
 module.exports = {
     run: async (message, member, args) => { 
-    if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return message.channel.send(`Vous n'avez pas la permission d'utiliser cette commande!` : "Le salon de bienvenue n'a pas été encore configuré!")
-    if(!args[0]) return message.channel.send(message.guild.channels.cache.get(db.get(`welcomechannel_${message.guild.id}`)) ? `Le salon de bienvenue est ${message.guild.channels.cache.get(db.get(`welcomechannel_${message.guild.id}`)).name} !`)
+        if(!message.guild.member(message.author).hasPermission("MANAGE_GUILD")) return message.channel.send(`Vous n'avez pas la permission d'utiliser cette commande!`)
+    if(!args[0]) return message.channel.send(message.guild.channels.cache.get(db.get(`welcomechannel_${message.guild.id}`)) ? `Le salon de bienvenue est ${message.guild.channels.cache.get(db.get(`welcomechannel_${message.guild.id}`)).name} !` : "Le salon de bienvenue n'a pas été encore configuré!")
     let MentionedChannel = message.mentions.channels.first() || message.guild.channels.cache.get(args[0])
     if(!MentionedChannel){
         if(args[0] == "reset") {
