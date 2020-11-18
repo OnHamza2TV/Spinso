@@ -193,7 +193,7 @@ client.on('message', function (message) {
       client.channels.get('778345249017298955').send(embed);
 });
 
-client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', async member => {
 let welcomechannel = member.guild.channels.cache.get(db.get(`welcomechannel_${member.guild.id}`))
 if(welcomechannel) {
   const welcomeCanvas = new canvas.Welcome();
