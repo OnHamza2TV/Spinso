@@ -228,6 +228,12 @@ msg.react('👋');
 } 
 });
 
+client.on('message', message => {
+	if (message.content === '.join') {
+		client.emit('guildMemberAdd', message.member);
+	}
+});
+
 client.on("message", message => {
   const args = message.content.split(" ").slice(1);
  
