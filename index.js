@@ -1,4 +1,5 @@
-const { MessageEmbed, Discord } = require('discord.js');
+const Discord = require('discord.js');
+    MessageEmbed = require('discord.js');
     canvas = require("discord-canvas")
     db = require("quick.db")
     chalk = require('chalk');
