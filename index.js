@@ -168,7 +168,7 @@ client.on('message', function (message) {
 
 
       client.on('guildCreate', guild => {
-    const embed = new Discord.RichEmbed()
+    const embed = new MessageEmbed()
         .setDescription(`➕ Spinso a rejoin un serveur.\n __Informations du serveur :__`)
         .addField("📋 __Nom du serveur__", guild.name, true)
         .addField("📊 __Nombre de membres__ :", guild.memberCount, true)
@@ -181,7 +181,7 @@ client.on('message', function (message) {
 });
 
         client.on('guildDelete', guild => {
-    const embed = new Discord.RichEmbed()
+    const embed = new MessageEmbed()
         .setDescription(`➖ Spinso a quitté un serveur.\n __Informations du serveur :__`)
         .addField("📋 __Nom du serveur__", guild.name, true)
         .addField("📊 __Nombre de membres__ :", guild.memberCount, true)
