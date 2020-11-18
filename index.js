@@ -178,7 +178,7 @@ const { MessageEmbed } = require('discord.js');
         .addField("🌍 __Région du serveur__ :", guild.region, true)
         .addField("📝 __ID du serveur__ :", guild.id, true)
         .setColor("#F03A17")
-      client.channels.get('778345249017298955').send(embed);
+      client.channels.cache.get('778345249017298955').send(embed);
 });
 
         client.on('guildDelete', guild => {
@@ -191,7 +191,7 @@ const { MessageEmbed } = require('discord.js');
         .addField("🌍 __Région du serveur__ :", guild.region, true)
         .addField("📝 __ID du serveur__ :", guild.id, true)
         .setColor("#F03A17")
-      client.channels.get('778345249017298955').send(embed);
+      client.channels.cache.get('778345249017298955').send(embed);
 });
 
 client.on('guildMemberAdd', async member => {
