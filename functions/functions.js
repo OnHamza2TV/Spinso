@@ -1,10 +1,9 @@
 const Discord = require("discord.js");
 const fs = require("fs");
-const color = JSON.parse(fs.readFileSync(`Storage/color.json`, `utf8`));
 
 module.exports = {
 
-    loadCommands: function(bot, dirname) {
+    loadCommands: function(dirname) {
         fs.readdir(dirname, (err, files) => {
             if(err) console.error(err);
             var jsFiles = files.filter(f => f.split(".").pop() === "js");
@@ -20,10 +19,10 @@ module.exports = {
                 delete require.cache[require.resolve(`${dirname}${f}`)];
                 var props = require(`${dirname}${f}`);
                 console.log(`${i + 1}: ${f} Loaded`);
-                bot.commands.set(props.help.name, props);
+                client.commands.set(props.help.name, props);
 
                 if(props.help.aliases) for (const alias of props.help.aliases){
-                    bot.aliases.set(alias, props);
+                    client.aliases.set(alias, props);
                 }
             })
         })
@@ -32,11 +31,11 @@ module.exports = {
   // =================================== EMBED SUCCESS & ERROR =================================== //
 
   errorEmbed: function(message, channel, argument) {
-    channel.send(new Discord.MessageEmbed().setDescription(`\\📛 **Erreur:** ${argument} \\📛`).setColor(color.red))
+    channel.send(new Discord.MessageEmbed().setDescription(`\\📛 **Erreur:** ${argument} \\📛`)
   },
 
   successEmbed: function(message, channel, argument) {
-    channel.send(new Discord.MessageEmbed().setDescription(`\\✅ **Succès:** ${argument}`).setColor(color.green))
+    channel.send(new Discord.MessageEmbed().setDescription(`\\✅ **Succès:** ${argument}`)
   },
 
 }
