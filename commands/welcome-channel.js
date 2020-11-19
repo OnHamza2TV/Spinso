@@ -14,7 +14,7 @@ if(!permission) return message.channel.send("You are missing the permission `ADM
  try{
 	 client.guilds.get(message.guild.id).channels.get(cArgs).send("Welcome channel set!")
 	 
- db.set(`welcomechannel_${message.guild.id}`, ID)
+ db.set(`welcomechannel_${message.guild.id}`, cArgs)
  
  message.channel.send("You have successfully set the welcome channel to <#" + cArgs + ">")
 return;
