@@ -12,7 +12,7 @@ if(message && message.deletable) message.delete().catch(e => {});
 
 let embed = new Discord.MessageEmbed()
 .setTitle(`Système de Ticket`)
-.setFooter(`Spinso | Crée par On Hamza.`, bot.user.displayAvatarURL())
+.setFooter(`Spinso | Crée par On Hamza.`, client.user.displayAvatarURL())
 .setDescription(`Réagissez avec 🎟️ pour créer un ticket.`);
 message.channel.send(embed).then(m => {
   m.react('🎟️');
