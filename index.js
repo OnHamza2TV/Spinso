@@ -39,6 +39,21 @@ client.giveawaysManager = new GiveawaysManager(client, {
     }
 });
 
+
+client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
+client.event = new Discord.Collection();
+
+const loadCommands = require("./functions/commands.js");
+const loadEvents = require("./functions/events.js");
+
+const load = async () => {
+    await loadCommands.run(client);
+    await loadEvents.run(client);
+}
+
+load();
+
 const clean = text => {
   if (typeof(text) === "string")
     return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
