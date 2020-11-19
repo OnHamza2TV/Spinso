@@ -31,11 +31,11 @@ module.exports = {
   // =================================== EMBED SUCCESS & ERROR =================================== //
 
   errorEmbed: function(message, channel, argument) {
-    channel.send(new Discord.MessageEmbed().setDescription(`\\📛 **Erreur:** ${argument} \\📛`)
+    channel.send(`📛 **Erreur:** ${argument} \\📛`)
   },
 
   successEmbed: function(message, channel, argument) {
-    channel.send(new Discord.MessageEmbed().setDescription(`\\✅ **Succès:** ${argument}`)
+    channel.send(`✅ **Succès:** ${argument}`)
   },
 
 }
