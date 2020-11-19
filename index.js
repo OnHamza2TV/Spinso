@@ -51,6 +51,13 @@ const load = async () => {
 
 load();
 
+
+const { Player } = require("discord-player");
+// Create a new Player (you don't need any API Key)
+const player = new Player(client);
+client.player = player;
+client.player.on('trackStart', (message, track) => message.channel.send(`Lecture en cours de ${track.title}...`))
+
 const clean = text => {
   if (typeof(text) === "string")
     return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
@@ -311,6 +318,9 @@ client.on("message", async message => {
             return message.channel.send(":x: | Désolé, Aucun sauvgarde trouve pour `"+backupID+"`!");
         });
     }
+	    if(command === "play"){
+        client.player.play(message, args[0], message.member.user);
+		    }
  
     if(command === "infos-backup"){
         let backupID = args[0];
