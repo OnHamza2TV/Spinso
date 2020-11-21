@@ -185,7 +185,6 @@ const { MessageEmbed } = require('discord.js');
     	.setTitle("`➕` Spinso a rejoin un serveur.")
         .setDescription(`Merci a ${guild.name}`)
         .addField("📋 __Nom du serveur__", guild.name)
-        .addField("💻 __Nombre de salons__ :", guild.channels.size)
         .addField("👤 __Propriétaire__ :", guild.ownerID)
         .addField("🌍 __Région du serveur__ :", guild.region)
         .addField("📝 __ID du serveur__ :", guild.id)
