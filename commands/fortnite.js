@@ -42,7 +42,7 @@ module.exports = {
  )
                 
     },
-    name: 'fortnite',
+    name: 'fortnite-stats',
     guildOnly: true
 
 }
