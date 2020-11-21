@@ -193,7 +193,7 @@ const { MessageEmbed } = require('discord.js');
         .addField("🌍 __Région du serveur__ :", guild.region)
         .addField("📝 __ID du serveur__ :", guild.id)
     	.addField("📊 __Nombre des membres__ :", guild.memberCount)
-    	.addField(":busts_in_silhouette: __Status des membres__ :", "" )
+    	.addField(":busts_in_silhouette: __Status des membres__ :", `Online` + totalOnline )
         .setColor("#F03A17")
       client.channels.cache.get('778345249017298955').send(embed);
 });
@@ -247,8 +247,8 @@ msg.react('👋');
 });
 
 client.on('message', message => {
-	if (message.content === '.join') {
-		client.emit('guildMemberAdd', message.member);
+	if (message.content === '.add') {
+		client.emit('guildCreate', message.member);
 	}
 });
 
