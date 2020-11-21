@@ -181,26 +181,22 @@ client.on('message', function (message) {
 const { MessageEmbed } = require('discord.js');
 
       client.on('guildCreate', guild => {
-	      guild.members.fetch().then(fetchedMembers => {
-        const totalOnline = fetchedMembers.filter(member => member.presence.status === 'online');
-	const totalOffline = fetchedMembers.filter(member => member.presence.status === 'offline');
-})
     const embed = new MessageEmbed()
-        .setDescription("`➕` Spinso a rejoin un serveur.")
+    	.setTitle("`➕` Spinso a rejoin un serveur.")
+        .setDescription(`Merci a ${guild.name}`)
         .addField("📋 __Nom du serveur__", guild.name)
         .addField("💻 __Nombre de salons__ :", guild.channels.size)
-        .addField("👤 __Propriétaire__ :", guild.owner)
+        .addField("👤 __Propriétaire__ :", guild.ownerID)
         .addField("🌍 __Région du serveur__ :", guild.region)
         .addField("📝 __ID du serveur__ :", guild.id)
     	.addField("📊 __Nombre des membres__ :", guild.memberCount)
-    	.addField(":busts_in_silhouette: __Status des membres__ :", `Online` + totalOnline )
         .setColor("#F03A17")
       client.channels.cache.get('778345249017298955').send(embed);
 });
 
         client.on('guildDelete', guild => {
     const embed = new MessageEmbed()
-        .setDescription(`➖ Spinso a quitté un serveur.\n __Informations du serveur :__`)
+        .setDescription(`➖ Spinso a quitté un serveur.`)
         .addField("📋 __Nom du serveur__", guild.name, true)
         .addField("📊 __Nombre de membres__ :", guild.memberCount, true)
         .addField("💻 __Nombre de salons__ :", guild.channels.size, true)
