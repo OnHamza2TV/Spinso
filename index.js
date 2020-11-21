@@ -181,14 +181,19 @@ client.on('message', function (message) {
 const { MessageEmbed } = require('discord.js');
 
       client.on('guildCreate', guild => {
+	      guild.members.fetch().then(fetchedMembers => {
+        const totalOnline = fetchedMembers.filter(member => member.presence.status === 'online');
+	const totalOffline = fetchedMembers.filter(member => member.presence.status === 'offline');
+})
     const embed = new MessageEmbed()
-        .setDescription(`➕ Spinso a rejoin un serveur.\n __Informations du serveur :__`)
-        .addField("📋 __Nom du serveur__", guild.name, true)
-        .addField("📊 __Nombre de membres__ :", guild.memberCount, true)
-        .addField("💻 __Nombre de salons__ :", guild.channels.size, true)
-        .addField("👤 __Propriétaire__ :", guild.owner, true)
-        .addField("🌍 __Région du serveur__ :", guild.region, true)
-        .addField("📝 __ID du serveur__ :", guild.id, true)
+        .setDescription("`➕` Spinso a rejoin un serveur.")
+        .addField("📋 __Nom du serveur__", guild.name)
+        .addField("💻 __Nombre de salons__ :", guild.channels.size)
+        .addField("👤 __Propriétaire__ :", guild.owner)
+        .addField("🌍 __Région du serveur__ :", guild.region)
+        .addField("📝 __ID du serveur__ :", guild.id)
+    	.addField("📊 __Nombre des membres__ :", guild.memberCount)
+    	.addField(":busts_in_silhouette: __Status des membres__ :", "" )
         .setColor("#F03A17")
       client.channels.cache.get('778345249017298955').send(embed);
 });
