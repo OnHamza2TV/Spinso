@@ -4,13 +4,13 @@ const dateFormat = require('dateformat');
 const db = require('quick.db');
 const fs = require('fs');
 
-module.exports = async (bot, reaction, user) => {
+module.exports = async (reaction, user) => {
   if(reaction.message.partial) await reaction.message.fetch();
   if(reaction.partial) await reaction.fetch();
 
   let message = reaction.message;
   if(!message) return;
-  if(user.bot) return;
+  if(user.client) return;
 
   let logsChannel = message.guild.channels.cache.find(c => c.id === db.get(`logs_${message.guild.id}`));
 
@@ -67,7 +67,7 @@ module.exports = async (bot, reaction, user) => {
         .setAuthor(`📝 | Ticket Ouvert`)
         .setTimestamp()
         .setColor("#36393f")
-        .setFooter(`Système de Ticket`, bot.user.displayAvatarURL())
+        .setFooter(`Système de Ticket`, client.user.displayAvatarURL())
         .setDescription(`Un utilisateur à ouvert un ticket et attend qu'on s'occupe de sa demande.`)
         .addField(`Informations`, `**Utilisateur :** \`${user.tag}\`\n**ID :** \`${user.id}\`\n**Ticket :** ${channel}\n**Date :** \`${dateFormat(new Date(), "dd/mm/yyyy - HH:MM:ss")}\``);
 
@@ -97,7 +97,7 @@ module.exports = async (bot, reaction, user) => {
         .setColor("#36393f")
         .setDescription(`L'auteur a confirmé la fermeture du ticket.`)
         .setTimestamp()
-        .setFooter(`Système de Ticket`, bot.user.displayAvatarURL())
+        .setFooter(`Système de Ticket`, client.user.displayAvatarURL())
         .addField(`Informations`, `**Utilisateur :** \`${user.tag}\`\n**ID :** \`${user.id}\`\n**Ticket :** \`${message.channel.name}\`\n**Date :** \`${dateFormat(new Date(), "dd/mm/yyyy - HH:MM:ss")}\``);
 
         if(logsChannel) logsChannel.send(deletedEmbed);
