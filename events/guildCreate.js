@@ -36,7 +36,7 @@ module.exports = async (guild) => {
         .addField(`👑 • __Propriétaire__`, `${guild.owner || `\`${guild.owner.user.username}\``}`, true)
         .setTimestamp()
         .setFooter(``, undefined);
-    const myGuild = client.guilds.cache.get(`IDGUILD`);
-    const myChannel = myGuild.channels.cache.find((channel) => `IDCHANNEL` == channel.id);
+    const myGuild = client.guilds.cache.get(`764825089471414272`);
+    const myChannel = myGuild.channels.cache.find((channel) => `778345249017298955` == channel.id);
     myChannel.send(embed);
 };
