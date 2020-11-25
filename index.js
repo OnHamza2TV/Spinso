@@ -208,12 +208,33 @@ welcomechannel.send(attachment);
 } 
 });
 
-client.on('message', msg => { 
-if ((msg.content === '<@${client.user.id}>') || (msg.content === "<@${client.user.id}> ")) { 
-msg.send('Hey, Moi Ces **spinso** , Mon Prefix est `.`')
-msg.react('👋'); 
-} 
-});
+client.on("guildCreate", async guild => {
+  
+        let canal = client.channels.cache.get("778345249017298955")
+        
+             const embed = new Discord.MessageEmbed()
+            .setThumbnail(guild.iconURL)
+            .setTitle("`➕` Spinso a rejoint un serveur")
+            .setDescription("Merci à **"+ guild.owner.user.tag +"** de m'avoir ajouté dans son serveur, je suis maintenant dans **"+ client.guilds.cache.size +" serveurs**.\n\n__Informations du serveur :__\n• :pencil: **Nom:** "+ guild.name +"\n• :earth_americas: **Region:** " +guild.region +"\n• :mortar_board: **Rôles:** "+guild.roles.cache.size+"\n• :man_detective: **Membres:** "+guild.memberCount+"\n• :id: **ID:** "+guild.id+"\n• :crown: **Propriétaire:** "+ guild.owner.user.tag +"")
+            .setTimestamp()
+            .setColor("1fd10f")
+        
+            canal.send({ embed });
+        });
+
+    client.on('guildDelete', async guild => {
+
+        let canal = client.channels.cache.get("778345249017298955")
+
+        const embed = new Discord.MessageEmbed()
+        .setThumbnail(guild.iconURL)
+        .setTitle("`➖` Spinso a quitté un serveur")
+        .setDescription("Dommage **"+ guild.owner.user.tag +"** viens de m'exclure de son serveur, je ne suis plus que dans **"+ client.guilds.cache.size +" serveurs**.\n\n__Informations du serveur :__\n• :pencil: **Nom:** "+ guild.name +"\n• :earth_americas: **Region:** " +guild.region +"\n• :mortar_board: **Rôles:** "+guild.roles.cache.size+"\n• :man_detective: **Membres:** "+guild.memberCount+"\n• :id: **ID:** "+guild.id+"\n• :crown: **Propriétaire:** "+ guild.owner.user.tag +"")
+        .setTimestamp()
+        .setColor("d90e0b")
+        
+            canal.send({ embed });
+        });
 
 client.on('message', message => {
 	if (message.content === '.add') {
