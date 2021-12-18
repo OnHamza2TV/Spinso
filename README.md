@@ -28,3 +28,6 @@ Spinso a beaucoup de fonctionnalités, avec **9 catégories principales**:
 *   🖨️ **Général**: `minimize`, `setafk`, `translate`, `remindme`, `hastebin`, `fortnite`, `minecraft` et **+**! 
 *   🎫 **Ticket**: `createticket`, `close force`, `close` ! 
 *   🎁 **Giveaway**: `create`, `delete`, `edit`, `end`, `reroll` ! 
+
+
+## ⚠️ Ce bot n'est plus mise à jour ⚠️
